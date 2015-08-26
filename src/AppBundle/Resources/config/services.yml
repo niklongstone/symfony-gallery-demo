@@ -1,0 +1,7 @@
+services:
+    app.default_controller:
+        class:        AppBundle\Controller\DefaultController
+        arguments:
+          - @templating
+          - %images_resource%
+          - %images_url%

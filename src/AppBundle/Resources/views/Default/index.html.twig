@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block bundleCss %}
+    <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container text-right">
+            <a href="{{ url('homepage', { _locale: 'en' }) }}" type="button" class="btn btn-default navbar-btn">EN</a>
+            <a href="{{ url('homepage', { _locale: 'fr' }) }}" type="button" class="btn btn-default navbar-btn">FR</a>
+            <a href="{{ url('homepage', { _locale: 'es' }) }}" type="button" class="btn btn-default navbar-btn">ES</a>
+        </div>
+    </nav>
+
+    <div class="row header">
+        <div class="col-md-12"><h1>{% trans %}Welcome{% endtrans %}</h1></div>
+    </div>
+
+    <div class="row content">
+        <div class="col-md-12">
+            {% for image in images %}
+                <img src="{{ asset(image, 'images') }}" class="img-thumbnail">
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
