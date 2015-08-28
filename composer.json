@@ -19,7 +19,11 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "puli/symfony-bundle": "~1.0",
+        "puli/twig-extension": "~1.0",
+        "symfony/filesystem": "^2.7",
+        "puli/url-generator": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

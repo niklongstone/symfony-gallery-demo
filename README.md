@@ -1,4 +1,4 @@
-picture-gallery
-===============
+Image gallery sample
+====================
 
-A Symfony project created on August 25, 2015, 2:46 pm.
+A Symfony project that shows an image gallery.

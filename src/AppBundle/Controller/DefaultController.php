@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -21,7 +20,7 @@ class DefaultController
 
     /**
      * @param EngineInterface $template
-     * @param                 $imagesFolder
+     * @param string          $imagesFolder
      */
     public function __construct(EngineInterface $template, $imagesFolder)
     {
@@ -34,7 +33,7 @@ class DefaultController
      *
      * @return Response
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $images = $this->getImages($this->imagesFolder);
 
