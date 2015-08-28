@@ -4,4 +4,3 @@ services:
         arguments:
           - @templating
           - %images_resource%
-          - %images_url%

@@ -20,20 +20,13 @@ class DefaultController
     private $imagesFolder;
 
     /**
-     * @var string
-     */
-    private $imagesBaseURL;
-
-    /**
      * @param EngineInterface $template
      * @param                 $imagesFolder
-     * @param                 $imagesBaseURL
      */
-    public function __construct(EngineInterface $template, $imagesFolder, $imagesBaseURL)
+    public function __construct(EngineInterface $template, $imagesFolder)
     {
         $this->template = $template;
         $this->imagesFolder = $imagesFolder;
-        $this->imagesBaseURL = $imagesBaseURL;
     }
 
     /**
