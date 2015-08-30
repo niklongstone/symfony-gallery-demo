@@ -38,7 +38,7 @@ class DefaultController
         $images = $this->getImages($this->imagesFolder);
 
         return new Response(
-            $this->template->render('AppBundle:Default:index.html.twig',
+            $this->template->render('/myapp/views/Default/index.html.twig',
                 array('images' => $images)
             )
         );

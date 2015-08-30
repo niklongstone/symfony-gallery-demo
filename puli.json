@@ -1,10 +1,41 @@
 {
     "version": "1.0",
     "name": "user/picture.gallery",
+    "path-mappings": {
+        "/myapp": "src/AppBundle/Resources",
+        "/myapp/images": "web/images/"
+    },
+    "bindings": {
+        "2db3367e-e303-459a-ac4d-7e122628aa7e": {
+            "query": "/myapp/images/*.jpg",
+            "type": "mygallery/image"
+        },
+        "b25cfaca-3dd8-4264-af4e-3db9d4ec5703": {
+            "query": "/myapp/public{,/**/*}",
+            "type": "puli/public-resource",
+            "parameters": {
+                "path": "/app",
+                "server": "localhost"
+            }
+        }
+    },
+    "binding-types": {
+        "mygallery/image": {
+
+        }
+    },
     "config": {
-      "repository": {
-        "type": "filesystem"
-      }
+        "repository": {
+            "type": "filesystem"
+        }
+    },
+    "extra": {
+        "servers": {
+            "localhost": {
+                "installer": "symlink",
+                "document-root": "web"
+            }
+        }
     },
     "packages": {
         "doctrine/annotations": {
