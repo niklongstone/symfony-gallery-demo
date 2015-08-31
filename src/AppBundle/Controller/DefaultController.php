@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Component\Finder\Finder;
+use Puli\Discovery\KeyValueStoreDiscovery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -14,18 +14,19 @@ class DefaultController
     private $template;
 
     /**
-     * @var string
+     * @var KeyValueStoreDiscovery
      */
-    private $imagesFolder;
+    private $puliDiscovery;
+
 
     /**
-     * @param EngineInterface $template
-     * @param string          $imagesFolder
+     * @param EngineInterface        $template
+     * @param KeyValueStoreDiscovery $puliDiscovery
      */
-    public function __construct(EngineInterface $template, $imagesFolder)
+    public function __construct(EngineInterface $template, KeyValueStoreDiscovery $puliDiscovery)
     {
         $this->template = $template;
-        $this->imagesFolder = $imagesFolder;
+        $this->puliDiscovery = $puliDiscovery;
     }
 
     /**
@@ -35,7 +36,7 @@ class DefaultController
      */
     public function indexAction()
     {
-        $images = $this->getImages($this->imagesFolder);
+        $images = $this->getImages();
 
         return new Response(
             $this->template->render('/myapp/views/Default/index.html.twig',
@@ -47,17 +48,16 @@ class DefaultController
     /**
      * Gets a list of images from the given folder.
      *
-     * @param $imagesFolder
-     *
-     * @return array
+     * @return array.
      */
-    private function getImages($imagesFolder)
+    private function getImages()
     {
         $images = array();
-        $finder = new Finder();
-        $finder->files()->sortByModifiedTime();
-        foreach ($finder->in($imagesFolder) as $file) {
-            $images[] = $file->getFilename();
+        $bindings = $this->puliDiscovery->findByType('mygallery/image');
+        foreach ($bindings as $binding) {
+            foreach ($binding->getResources() as $resource) {
+                $images[] = $resource->getName();
+            }
         }
 
         return $images;
